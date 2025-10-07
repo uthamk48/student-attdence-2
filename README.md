@@ -1,106 +1,112 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <title>www.studentattdence.com/</title>
-  <meta charset="UTF-8">
-  <meta name="website" conent="https:// studentattdence.com//" intialscale="1.1">
-  <body>
-    <div id="container">
-    <nav></nav>
-    <h2>NAGAJUNA GOVERMENT COLLAGE(AUTONOMOUS)</h2>
-    <h3><u>STUDENT ATTDENCE</u></h3>
-    <label id="hallticket">Hall Ticket No</label>
-    <input type="text" id="hallTicketInput" requried minlength="15" maxlength="15"/>
-    <button onclick="checkhallTicket()"  type="submit" class="submit.btn">submit</button>
-    <p>NOTE: enter your hallticket as student attdence</p>
-    <style>
-    
-
-      
-      h2{
-        text-align: center;
-        background-color: #2196f3;
-        color:white;
-      }
-      h3{
-        text-align: center;
-        color:black;
-      }
-      #container{
-        background-color: antiquewhite;
-        border: solid black;
-      
-
-      }
-      button{
-        background-color: #007B;
-        color:white;
-        margin:0;
-        padding:10px;
-        border-radius: 40px;
-      
-      }
-      submit.btn:hover{
-         background-color: green;
-      }
-
-    </style>
-   
-   <script>
-    function checkhallTicket(){
-      const input=document.getElementById("hallTicketInput").value;
-    
-
-      if(input == "240440284681002"){
-       
-        alert(input +" hallticket no have submit ")
-        console.log(input+"hallticket no have submit")
-      }
-      
-      if(input  == "240440284681004"){
-         alert(input+"hallticket no have submit")
-          console.log(input+"hallticket no have submit")
-         
-      }
-      
-      if(input == "240440384681005")
-      {
-         alert(input+"hallticket no have submit")
-           console.log(input+"hallticket no have submit")
-      }
-     
-        
-     if(input == "240440284681006")
-     {
-       alert(input+"hallticket no have submit")
-        console.log(input+"hallticket no have submit")
-     }
-    
-    if(input == "240440284681007"){
-      alert(input+"hallticket no have submit")
-       console.log(input+"hallticket no have submit")
+  <title>NG College Login</title>
+  <style>
+    body{
+      background-color: #ffff;
+      padding:20px;
+      display:flex;
+      justify-content: center;
     }
-   
-    if(input == "240440284671008"){
-        alert(input+"hallticket no have submit")
-        console.log(input+"hallticket no have submit")
-
+    a {
+      color:black;
+      padding:20px;
+      border-radius:20px;
     }
-   
-    if(input == "240440284681009"){
-        alert(input+"hallticket no have submit")
-        console.log(input+"hallticket no have submit")
-
+    h1{
+      padding :20px;
+      border-radius:10px;
+      background-color:blue;
+      text-align: center;
+      color:white;
+      border:solid black;
     }
-    if(input == "240440284681010"){
-      alert(input+"hallticket no have submit")
-      console.log(input+"hallticket no have submit")
+    form{
+      color:black;
+      background-color : white;
+      border:solid black;
+      text-align:center;
+      padding: 300px;
+    }
+    h2{
+      color:black;
+      padding:20px;
+    }
+    button{
+      padding:20px;
+      width:50%;
+      background-color:blue;
+      border-radius: 20px;
+      color:white;
+    }
+    input{
+      justify-content:space-around;
+    }
+  </style>
+</head>
+<body>
 
-  }
-   
+  <form>
+    <h1>NG College</h1>
+    <h2>LOGIN</h2>
     
-  
+    <h3>Name</h3>
+    <input type="text" id="username" required>
+    
+    <h3>Hallticket</h3>
+    <input type="text" id="hallticket" required>
+    
+    <br><br>
+    <button>Login</button>
+  </form>
 
-  
-}
-      
-   </script>
+  <script>
+    // list of valid students (name + hallticket)
+    var students = [
+      { name: "yelander", hallticket: "240440284681002" },
+      { name: "Utham", hallticket: "240440284681086" },
+      { name: "ch saibalaji", hallticket: "240440284681031" },
+      { name: "Priya", hallticket: "11223" },
+      { name: "Kiran", hallticket: "44556" },
+      { name: "Suma", hallticket: "77889" },
+      { name: "Rohit", hallticket: "99100" },
+      { name: "Manoj", hallticket: "13579" },
+      { name: "Anjali", hallticket: "24680" },
+      { name: "Sneha", hallticket: "90807" }
+      // 👉 You can add up to 100 here same format
+    ];
+
+    var loginBtn = document.querySelector("button");
+    var errorMessage = document.createElement("div");
+    errorMessage.style.color = "red";
+    errorMessage.style.marginTop = "10px";
+    errorMessage.style.fontWeight = "bold";
+    loginBtn.parentElement.appendChild(errorMessage);
+
+    // when user clicks login
+    loginBtn.addEventListener("click", function(event){
+      event.preventDefault();
+
+      var nameInput = document.getElementById("username").value.trim();
+      var hallticketInput = document.getElementById("hallticket").value.trim();
+
+      // check if any student matches
+      var found = false;
+      for(var i = 0; i < students.length; i++){
+        if(students[i].name.toLowerCase() === nameInput.toLowerCase() && students[i].hallticket === hallticketInput){
+          found = true;
+          break;
+        }
+      }
+
+      if(found){
+        window.location.href = "dashboard.html";
+      } else {
+        errorMessage.innerText = "Name or Hallticket is incorrect!";
+      }
+    });
+  </script>
+
+</body>
+</html>
